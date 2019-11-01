@@ -12,6 +12,14 @@ router.get('/', (req, res) => {
 
 })
 
+router.post('/', (req, res) => {
+  Projects.insert(req.body)
+    .then(newProject => {
+      res.status(201).json(newProject);
+    })
+    .catch(err => { res.status(500).json({ errorMessage: "Something went wrong with your post" }) })
+})
+
 
 module.exports = router;
 
